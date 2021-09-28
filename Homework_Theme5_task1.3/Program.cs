@@ -3,59 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/*Первый метод умножает матрицу на число. Для этого он принимает в качестве параметров матрицу и число,
-  на которое будет происходить умножение. В качестве результата этот метод возвращает новую матрицу,
-  а исходная матрица остаётся неизменной.*/
-namespace Homework_Theme5_task1._1
+//Третий метод аналогичен предыдущему, только выполняется не сложение, а вычитание.
+
+namespace Homework_Theme5_task1._3
 {
     class Program
     {
-        static int[,] matrixA;     //исходная матрица
-        static int[,] matrixB;      //полученная матрица
+
         static Random rand = new Random();
-
-
         static void Main(string[] args)
         {
-            int str, stolb;     //количество строк и стоблцов
-            int num;            //число
+            int str, stolb;     //количество строк и стоблцов матриц
 
-            Console.WriteLine("\n Перемножение матрицы на число :");
+            Console.WriteLine("\n Вычитание матриц :");
 
-            Console.WriteLine("\nВведите количество строк матрицы(0-9) :");
+            Console.WriteLine("\tВведите количество строк матрицы (0-9):");
             str = EnterNumber();
 
-            Console.WriteLine("\nВведите количество столбцов матрицы(0-9) :");
+            Console.WriteLine("\tВведите количество столбцов матрицы (0-9):");
             stolb = EnterNumber();
 
-            Console.WriteLine("\nВведите число(0-9) :");
-            num = EnterNumber();
+            Console.WriteLine("\n Матрица А:");          //определение и заполнение матриц 
+            int[,] matrixA = MatrixFill(str, stolb);
+            Console.WriteLine("\n Матрица B:");
+            int[,] matrixB = MatrixFill(str, stolb);
 
-            Console.WriteLine("\nИсходная матрица: ");
-            matrixA = MatrixFill(str, stolb);         
+            Console.WriteLine("\n Вычтенные матрицы:");
+            PrintMatrix(MatrixSub(matrixA, matrixB));
 
-            Console.WriteLine("\n Перемноженная матрица на число: ");
-            PrintMatrix(MatrixMultiply(matrixA, num));
-
-            Console.ReadKey();
         }
 
         /// <summary>
-        /// Метод умножения матрицы на число
+        /// Метод вычитания двух матриц
         /// </summary>
-        /// <param name="matrix">исходная матрица</param>
-        /// <param name="num">исходное число</param>
-        /// <returns>Перемноженная матрица</returns>
-        static int[,] MatrixMultiply(int[,] matrix, int num)
+        /// <param name="matrixa">Первая матрица</param>
+        /// <param name="matrixb">Вычитаемая матрица</param>
+        /// <returns></returns>
+        static int[,] MatrixSub(int[,] matrixa, int[,] matrixb)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int[,] matrixS = new int[matrixa.GetLength(0), matrixa.GetLength(1)];
+            for (int i = 0; i < matrixa.GetLength(0); i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrixa.GetLength(1); j++)
                 {
-                    matrix[i, j] = matrix[i, j] * num;
+                    matrixS[i, j] = matrixa[i, j] - matrixb[i, j];
                 }
             }
-            return matrix;
+            return matrixS;
         }
 
 
