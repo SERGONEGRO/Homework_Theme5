@@ -11,7 +11,7 @@ namespace Homework_Theme5_task1._1
     class Program
     {
         static int[,] matrixA;     //исходная матрица
-        static int[,] matrixB;      //полученная матрица
+        //static int[,] matrixB;      //полученная матрица
         static Random rand = new Random();
 
 
@@ -31,8 +31,9 @@ namespace Homework_Theme5_task1._1
             Console.WriteLine("\nВведите число(0-9) :");
             num = EnterNumber();
 
-            Console.WriteLine("\nИсходная матрица: ");
-            matrixA = MatrixFill(str, stolb);         
+            matrixA = MatrixFill(str, stolb);
+            Console.WriteLine($"\nИсходная матрица: ");
+            PrintMatrix(matrixA);
 
             Console.WriteLine("\n Перемноженная матрица на число: ");
             PrintMatrix(MatrixMultiply(matrixA, num));
@@ -89,9 +90,7 @@ namespace Homework_Theme5_task1._1
                 for (int j = 0; j < stolbec; j++)
                 {
                     matrixX[i, j] = rand.Next(5);
-                    Console.Write($"{matrixX[i, j]}\t");
                 }
-                Console.WriteLine();
             }
             return matrixX;
         }
@@ -103,9 +102,12 @@ namespace Homework_Theme5_task1._1
         /// <param name="matrix">исходная матрица</param>
         static void PrintMatrix(int[,] matrix)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int matrixLength0 = matrix.GetLength(0);
+            int matrixLength1 = matrix.GetLength(1);
+
+            for (int i = 0; i < matrixLength0; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrixLength1; j++)
                 {
                     Console.Write($"{matrix[i, j]}\t");
                 }

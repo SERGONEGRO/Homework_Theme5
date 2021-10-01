@@ -16,7 +16,7 @@ namespace Homework_Theme5_task4._1
         static void Main(string[] args)
         {
            
-            int[] numbers = new int[] { 8, 4, 2, 3 };
+            double[] numbers = new double[] { 1, 0, -2};
 
             Console.WriteLine(CheckNumbers(numbers));
 
@@ -26,15 +26,23 @@ namespace Homework_Theme5_task4._1
         /// </summary>
         /// <param name="nums">массив чисел</param>
         /// <returns>строка</returns>
-        static string CheckNumbers(int[] nums)
+        static string CheckNumbers(double[] nums)
         {
-            for(int i = 1; i<nums.Length-1;i++)
+            string str="";
+            bool flagAP = true;
+            bool flafGP = true;
+            for (int i = 1; i<nums.Length-1;i++)
             {
-                if ((nums[i] - nums[i - 1]) == (nums[i + 1] - nums[i])) return "Есть Арифметическая прогрессия";
-                if ((nums[i]/nums[i-1]) == (nums[i + 1] / nums[i])) return "Есть Геометрическая прогрессия";
+                if ((nums[i] - nums[i - 1]) != (nums[i + 1] - nums[i])) flagAP = false;
+                if(nums[i-1] !=0 || nums[i]!=0)
+                if ((nums[i] / nums[i - 1]) != (nums[i + 1] / nums[i])) flafGP = false;
             }
-                       
-            return "Никакой прогрессии нет";
+
+            if (flagAP) str += "Найдена Арифметическая прогрессия\n";
+            if (flafGP) str += "Найдена Геометрическая прогрессия\n";
+            if (str == "") str = "Прогрессии отсутсвуют";
+
+            return str;
         }
     }
 }

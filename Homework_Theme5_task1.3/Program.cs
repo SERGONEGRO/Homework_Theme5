@@ -25,8 +25,11 @@ namespace Homework_Theme5_task1._3
 
             Console.WriteLine("\n Матрица А:");          //определение и заполнение матриц 
             int[,] matrixA = MatrixFill(str, stolb);
+            PrintMatrix(matrixA);
+
             Console.WriteLine("\n Матрица B:");
             int[,] matrixB = MatrixFill(str, stolb);
+            PrintMatrix(matrixB);
 
             Console.WriteLine("\n Вычтенные матрицы:");
             PrintMatrix(MatrixSub(matrixA, matrixB));
@@ -69,6 +72,7 @@ namespace Homework_Theme5_task1._3
             return Int32.Parse(s);
         }
 
+        
         /// <summary>
         /// Метод для заполнения матрицы
         /// </summary>
@@ -83,9 +87,7 @@ namespace Homework_Theme5_task1._3
                 for (int j = 0; j < stolbec; j++)
                 {
                     matrixX[i, j] = rand.Next(5);
-                    Console.Write($"{matrixX[i, j]}\t");
                 }
-                Console.WriteLine();
             }
             return matrixX;
         }
@@ -97,9 +99,12 @@ namespace Homework_Theme5_task1._3
         /// <param name="matrix">исходная матрица</param>
         static void PrintMatrix(int[,] matrix)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int matrixLength0 = matrix.GetLength(0);
+            int matrixLength1 = matrix.GetLength(1);
+
+            for (int i = 0; i < matrixLength0; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrixLength1; j++)
                 {
                     Console.Write($"{matrix[i, j]}\t");
                 }
