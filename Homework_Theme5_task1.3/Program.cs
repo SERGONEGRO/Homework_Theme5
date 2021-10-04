@@ -44,10 +44,13 @@ namespace Homework_Theme5_task1._3
         /// <returns></returns>
         static int[,] MatrixSub(int[,] matrixa, int[,] matrixb)
         {
-            int[,] matrixS = new int[matrixa.GetLength(0), matrixa.GetLength(1)];
-            for (int i = 0; i < matrixa.GetLength(0); i++)
+            int matrixLength0 = matrixa.GetLength(0);
+            int matrixLength1 = matrixa.GetLength(1);
+
+            int[,] matrixS = new int[matrixLength0, matrixLength1];
+            for (int i = 0; i < matrixLength0; i++)
             {
-                for (int j = 0; j < matrixa.GetLength(1); j++)
+                for (int j = 0; j < matrixLength1; j++)
                 {
                     matrixS[i, j] = matrixa[i, j] - matrixb[i, j];
                 }

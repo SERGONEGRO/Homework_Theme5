@@ -16,9 +16,10 @@ namespace Homework_Theme5_task4._1
         static void Main(string[] args)
         {
            
-            double[] numbers = new double[] { 1, 0, -2};
+            double[] numbers = new double[] { 0,1};
 
-            Console.WriteLine(CheckNumbers(numbers));
+            if (numbers.Length>=3)  Console.WriteLine(CheckNumbers(numbers));
+            else Console.WriteLine("Для определения типа прогрессии нужно минимум три числа.");
 
         }
         /// <summary>

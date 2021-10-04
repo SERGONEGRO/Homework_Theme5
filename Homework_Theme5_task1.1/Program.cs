@@ -49,9 +49,12 @@ namespace Homework_Theme5_task1._1
         /// <returns>Перемноженная матрица</returns>
         static int[,] MatrixMultiply(int[,] matrix, int num)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int matrixLength0 = matrix.GetLength(0);
+            int matrixLength1 = matrix.GetLength(1);
+
+            for (int i = 0; i < matrixLength0; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrixLength1; j++)
                 {
                     matrix[i, j] = matrix[i, j] * num;
                 }
